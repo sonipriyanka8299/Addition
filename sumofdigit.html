@@ -1,0 +1,66 @@
+<script src="react.development.js"></script>
+<script src="babel.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="toor"></div>
+
+
+
+<script type="text/babel">
+
+    class Digit extends React.Component{
+     constructor(){
+          super();
+    
+            this.fnDigit=this.fnDigit.bind(this);
+             this.state = {
+        
+             count :0
+             
+               
+          }
+      }
+
+       fnDigit(){
+   
+        let no =Number(this.refs.no.value)
+        var result=0;
+        var temp=no;
+        var rem;
+        
+        while(temp!==0){
+            rem=temp%10;
+            result=result+rem;
+            temp=parseInt(temp/10);
+
+        }
+              
+        
+         this.setState({
+             count :result                                           
+             
+           
+         
+      })
+     }     
+
+       
+
+        render(){
+        
+          return <div>
+                        <p>Enter The No:<input ref="no"/></p>
+                        
+                        <p><input  onClick={this.fnDigit} type="button" value='Sum'/></p>
+                        
+                        <p>{this.state.count}</p>
+                        
+                         
+                       
+
+                   </div>
+        }
+    }
+
+    ReactDOM.render(<Digit />,document.getElementById("toor"));
+</script>
